@@ -1,7 +1,8 @@
 <template>
-  <div class="home h-screen">
-    
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis officiis et qui. Veniam odit sint, perferendis soluta voluptatum alias suscipit ducimus architecto harum, corporis, doloremque praesentium! Molestiae nam asperiores distinctio nisi porro aliquam, consectetur libero aut qui cupiditate tenetur quos blanditiis accusamus impedit ad illum. Ipsam, sed rem laudantium commodi nisi dicta optio reprehenderit tempora asperiores eius. Nesciunt cum perferendis facere fugiat, dignissimos reiciendis sequi id aspernatur odio ad accusantium quae nobis impedit, perspiciatis non eaque asperiores? Culpa praesentium, ratione quis est cum adipisci excepturi iusto, error quas eligendi eaque, reiciendis autem reprehenderit. Quaerat sequi omnis animi sed assumenda, officiis ipsa maxime atque illum ullam iure minus autem a odio dolore sit porro nesciunt illo voluptatem distinctio laborum tenetur ipsum praesentium voluptas! Odio eum doloribus earum, nostrum ducimus magnam voluptate minima deleniti accusamus aliquam vero harum vel voluptatem. Iste et ipsam laborum enim possimus, quaerat necessitatibus repudiandae. Ab modi repellat distinctio odio. Ratione dolor maxime aliquid officiis, voluptates dolore eveniet aspernatur nostrum itaque sapiente modi mollitia nobis nesciunt voluptatem perferendis natus sed reiciendis quia! Et odio necessitatibus quisquam iure veritatis expedita voluptatibus consectetur explicabo rerum dolorem sit velit eos voluptatem vel error ullam non ab at ipsa, iusto perspiciatis nesciunt. Minima illo ab sequi alias corrupti laudantium eveniet doloribus ducimus maxime.
+  <div class="home h-screen flex flex-col justify-center">
+    <h1 class="title">Lídia Leszkovszki</h1>
+    <div class="subtitle pt-6 pb-10">Artist, Fontanafredda</div>
+    <div><button class="big-btn">View Gallery</button></div>
   </div>
 </template>
 
@@ -33,3 +34,26 @@ export default {
   },
 }
 </script>
+<style scoped>
+  .home{
+    position: relative;
+    width: 100%;
+    background:radial-gradient(rgba(0, 0, 0,0.55), rgba(0, 0, 0,0.95));
+    background-repeat: no-repeat;
+    background-size: cover;    
+    background-position: bottom center; 
+  }
+  .home::before{
+    pointer-events: none;
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100vh;
+    background-image: url('../assets/hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;    
+    background-position: bottom center;
+    z-index: -1;
+  }
+
+</style>

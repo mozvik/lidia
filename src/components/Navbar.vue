@@ -2,16 +2,16 @@
   <div class="navbar fixed h-16 w-screen flex justify-between">
     <div id="menu" class="flex flex-row h-screen" 
     :class="!open ? 
-    'transform ease-in duration-300 -translate-x-60':
+    'transform ease-in duration-300 -translate-x-80 ':
     'transform ease-in duration-300 '">
-      <div id="menu-buttons" class=" ml-8 order-1 relative mt-0 md:mt-16">
+      <div id="menu-buttons" class=" ml-16 order-1 relative mt-0 md:mt-16">
         <button @click="open = !open">
             <MenuAlt2Icon class="h-10 w-10 text-blue-500 absolute left-0 top-0 transform ease-in duration-300" :class="!open ? 'rotate-0 opacity-1':'rotate-180 opacity-0'"/>
             <ArrowSmDownIcon class="h-10 w-10 text-blue-500 absolute left-0 top-0 transform ease-in duration-300" :class="open ? 'rotate-90 opacity-1':'-rotate-0 opacity-0'"/>
         </button>
       </div>
         
-      <div id="menu-items" class="order-0  pt-16">
+      <div id="menu-items" class="order-0 pt-16">
         <div>
           <router-link to="/">Home</router-link>
         </div> 
@@ -58,6 +58,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.navbar{
+  z-index: 3;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.25s ease, transform 0.25s ease; 
@@ -72,6 +75,6 @@ export default {
 }
 #menu-items{
   background: green;
-  width: 15rem;
+  width: 20rem;
 }
 </style>
