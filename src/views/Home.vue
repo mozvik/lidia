@@ -1,6 +1,7 @@
 <template>
   <div class="home h-screen flex flex-col justify-center">
-    <h1 class="title">Rita di Franco</h1>
+    
+    <h1 class="title">Lídia di Franco</h1>
     <div class="subtitle pt-6 pb-10">Artist, Fontanafredda</div>
     <div><button class="big-btn">View Gallery</button></div>
   </div>
@@ -38,7 +39,9 @@ export default {
   .home{
     position: relative;
     width: 100%;
-    background:radial-gradient(rgba(0, 0, 0,0.55), rgba(0, 0, 0,0.95));
+    background:radial-gradient(rgba(0, 0, 0,0.95), rgba(0, 0, 0,0.05)),
+    linear-gradient(to right, rgba(0, 0, 0,0.25), rgba(0, 0, 0,0.05))
+    ;
     background-repeat: no-repeat;
     background-size: cover;    
     background-position: bottom center; 
@@ -47,6 +50,8 @@ export default {
     pointer-events: none;
     position: absolute;
     content: '';
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
     background-image: url('../assets/hero.jpg');
@@ -55,5 +60,5 @@ export default {
     background-position: bottom center;
     z-index: -1;
   }
-
+  
 </style>

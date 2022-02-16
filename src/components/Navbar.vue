@@ -2,7 +2,7 @@
   <div class="navbar fixed h-16 w-screen flex justify-between">
     <div id="menu" class="flex flex-row h-screen" 
     :class="!open ? 
-    'transform ease-in duration-300 -translate-x-80 ':
+    'transform ease-in duration-300 -translate-x-72 ':
     'transform ease-in duration-300 '">
       <div id="menu-buttons" class=" ml-16 order-1 relative mt-0 md:mt-16">
         <button @click="open = !open">
@@ -12,18 +12,18 @@
       </div>
         
       <div id="menu-items" class="order-0 pt-16 flex flex-col justify-around items-start pl-8">
-        <div class="text-6xl p-color"><h1>RdF</h1></div>
+        <div class="text-6xl p-color pl-7"><h1>RdF</h1></div>
         <div class="flex flex-col items-start">
           <div v-for="(item, index) in menuItems" :key="index" class="menu-item transform ease-in-out duration-300"
           :class="open ? '-translate-x-1 opacity-1':'-translate-x-10 opacity-0'"
           :style="open ? 'transition-delay: '+ ((index*75)+100) +'ms':'transition-delay: 0ms'">
             
-            <p>
-              <router-link :to="item.link">{{ item.name }}</router-link>
-            </p>
+
+              <router-link :to="item.link" @click="open = false">{{ item.name }}</router-link>
+
           </div>
         </div>
-        <div>
+        <div class=" pl-7">
           <div class="flex">
             <PhoneIcon class="h-5 w-5 mr-4 p-color"/>
             <p>+39 000 000 00</p>
@@ -118,20 +118,22 @@ export default {
   color: var(--primary);
 }
 #menu-items{
-  background: var(--color);
+  background: var(--secondary);
   color: var(--background);
-  width: 20rem;
+  width: 18rem;
+  font-weight: bold;
+  
 }
-.menu-item{
-  /* padding: 1rem 10rem 1rem 1rem; */
-  /* width: 10rem; */
+#menu-buttons button{
+ color: var(--primary);
 }
-.menu-item>p{
+.menu-item>a{
+  
   display: inline-block;
-  padding: 1rem 13rem 1rem 1rem;
+  padding: 1rem 9rem 1rem 2rem;
   transition: all .1s ease;
 }
-.menu-item>p:hover{
+.menu-item>a:hover{
   background: var(--primary);
   color: var(--color);
   transition: all .1s ease;
