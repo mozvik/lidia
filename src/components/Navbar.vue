@@ -6,23 +6,45 @@
     'transform ease-in duration-300 '">
       <div id="menu-buttons" class=" ml-16 order-1 relative mt-0 md:mt-16">
         <button @click="open = !open">
-            <MenuAlt2Icon class="h-10 w-10 text-blue-500 absolute left-0 top-0 transform ease-in duration-300" :class="!open ? 'rotate-0 opacity-1':'rotate-180 opacity-0'"/>
-            <ArrowSmDownIcon class="h-10 w-10 text-blue-500 absolute left-0 top-0 transform ease-in duration-300" :class="open ? 'rotate-90 opacity-1':'-rotate-0 opacity-0'"/>
+            <MenuAlt2Icon class="h-10 w-10  absolute left-0 top-0 transform ease-in duration-300" :class="!open ? 'rotate-0 opacity-1':'rotate-180 opacity-0'"/>
+            <ArrowSmDownIcon class="h-10 w-10  absolute left-0 top-0 transform ease-in duration-300" :class="open ? 'rotate-90 opacity-1':'-rotate-0 opacity-0'"/>
         </button>
       </div>
         
-      <div id="menu-items" class="order-0 pt-16">
-        <div>
-          <router-link to="/">Home</router-link>
-        </div> 
-        <div>
-          <router-link to="/about">About</router-link>
+      <div id="menu-items" class="order-0 pt-16 flex flex-col justify-around items-start pl-8">
+        <div class="text-6xl p-color"><h1>RdF</h1></div>
+        <div class="flex flex-col items-start">
+          <div v-for="(item, index) in menuItems" :key="index" class="menu-item transform ease-in-out duration-300"
+          :class="open ? '-translate-x-1 opacity-1':'-translate-x-10 opacity-0'"
+          :style="open ? 'transition-delay: '+ ((index*75)+100) +'ms':'transition-delay: 0ms'">
+            
+            <p>
+              <router-link :to="item.link">{{ item.name }}</router-link>
+            </p>
+          </div>
         </div>
-          <div>
-          <router-link to="/contact">Contact</router-link>
+        <div>
+          <div class="flex">
+            <PhoneIcon class="h-5 w-5 mr-4 p-color"/>
+            <p>+39 000 000 00</p>
+          </div>
+          <div class="flex">
+            <MailIcon class="h-5 w-5 mr-4 p-color"></MailIcon>
+            <p>example@.com</p>
+          </div><br>
+          <div class="flex">
+            <BIconFacebook class="h-6 w-6 mr-5"/>
+            <BIconTwitter class="h-6 w-6 mr-5"/>
+            <BIconInstagram class="h-6 w-6 mr-5"/>
+          </div>
         </div>
-      </div>
+      </div> 
+      
+    
+      
+
     </div>
+
     <div id="logo" class="block md:hidden">LOGO</div>
       
   </div>
@@ -31,13 +53,32 @@
 <script>
 import { ref, onMounted
  } from 'vue'
- import { MenuAlt2Icon, ArrowSmDownIcon } from '@heroicons/vue/solid'
+ import { MenuAlt2Icon, ArrowSmDownIcon, PhoneIcon, MailIcon, } from '@heroicons/vue/solid'
+ import { BIconFacebook, BIconTwitter, BIconInstagram } from 'bootstrap-icons-vue';
 
 export default {
   name: 'Navbar',
-  components: { MenuAlt2Icon, ArrowSmDownIcon },
+  components: { MenuAlt2Icon, ArrowSmDownIcon, PhoneIcon, MailIcon, BIconFacebook, BIconTwitter, BIconInstagram },
   setup(){
     const open = ref(false)
+
+    const menuItems = [{
+      name: 'Home',
+      link: '/',
+    },{
+      name: 'About',
+      link: '/about',
+    },{
+      name: 'Gallery',
+      link: '/gallery',
+    },{
+      name: 'Services',
+      link: '/services',
+    },{
+      name: 'Contact',
+      link: '/contact',
+    }
+    ]
 
     
     onMounted( () => {
@@ -48,7 +89,7 @@ export default {
       })
     })
    
-    return {open}
+    return {open, menuItems}
   },
   props: {
     msg: String
@@ -73,8 +114,27 @@ export default {
   opacity: 0;
   transform: rotate(90deg);
 }
+.p-color{
+  color: var(--primary);
+}
 #menu-items{
-  background: green;
+  background: var(--color);
+  color: var(--background);
   width: 20rem;
 }
+.menu-item{
+  /* padding: 1rem 10rem 1rem 1rem; */
+  /* width: 10rem; */
+}
+.menu-item>p{
+  display: inline-block;
+  padding: 1rem 13rem 1rem 1rem;
+  transition: all .1s ease;
+}
+.menu-item>p:hover{
+  background: var(--primary);
+  color: var(--color);
+  transition: all .1s ease;
+}
+
 </style>

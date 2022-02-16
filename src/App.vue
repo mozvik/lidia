@@ -19,14 +19,40 @@ export default {
 
 
 <style>
+:root{
+  --background: #2d2a32;
+  --color: #fafdf6;
+  --primary: #db5461;
+  --secondary: #ffd9c4;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  color: gainsboro;
+
+  color: var(--color);
 }
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Cormorant Upright', serif;
+    font-weight: 400;
+    font-style:normal;
+}
+
+.button {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
 
 #nav {
   padding: 30px;
@@ -43,7 +69,8 @@ export default {
 .title{
   font-size: 4rem;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
+  font-variant: small-caps;
 }
 .subtitle{
   font-size: 1.5rem;

@@ -1,6 +1,6 @@
 <template>
   <div class="home h-screen flex flex-col justify-center">
-    <h1 class="title">Lídia Leszkovszki</h1>
+    <h1 class="title">Rita di Franco</h1>
     <div class="subtitle pt-6 pb-10">Artist, Fontanafredda</div>
     <div><button class="big-btn">View Gallery</button></div>
   </div>
