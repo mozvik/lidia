@@ -1,5 +1,5 @@
 <template>
-  <div class="home h-screen flex flex-col justify-center">
+  <div class="home flex flex-col justify-center">
     
     <h1 class="title">Lídia di Franco</h1>
     <div class="subtitle pt-6 pb-10">Artist, Fontanafredda</div>
@@ -22,13 +22,13 @@ export default {
     const paintings = reactive({})
 
     onMounted(() => {
-      fetch("http://localhost/wp-lidia/wp-json/wp/v2/media/9")
+      // fetch("http://localhost/wp-lidia/wp-json/wp/v2/media/9")
       // fetch("http://localhost/wp-lidia/wp-json/wp/v2/posts?_embed")
-            .then((res) => res.json())
-            .then((res) => {
-              paintings.data = res;
-              console.log('data :>> ', paintings.data );
-            });
+            // .then((res) => res.json())
+            // .then((res) => {
+            //   paintings.data = res;
+            //   console.log('data :>> ', paintings.data );
+            // });
     })
 
     return {paintings}
@@ -39,26 +39,11 @@ export default {
   .home{
     position: relative;
     width: 100%;
-    background:radial-gradient(rgba(0, 0, 0,0.95), rgba(0, 0, 0,0.05)),
-    linear-gradient(to right, rgba(0, 0, 0,0.25), rgba(0, 0, 0,0.05))
-    ;
+    height: 100vh;
+    background-image: radial-gradient( rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.65)), url('../assets/hero.jpg');
     background-repeat: no-repeat;
     background-size: cover;    
     background-position: bottom center; 
   }
-  .home::before{
-    pointer-events: none;
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-image: url('../assets/hero.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;    
-    background-position: bottom center;
-    z-index: -1;
-  }
-  
+    
 </style>

@@ -31,7 +31,7 @@
               <div class="error">&nbsp;</div>
             </div>
           </form>
-          <button class="float-left big-btn">Send Message</button>
+          <button class="float-left big-btn btn-light">Send Message</button>
         </div>
         <div class="divide-y divide-dashed"></div>
         <div class="contacts p-5"><br>

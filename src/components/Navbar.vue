@@ -71,10 +71,12 @@ export default {
     },{
       name: 'Gallery',
       link: '/gallery',
-    },{
-      name: 'Services',
-      link: '/services',
-    },{
+    }
+    // ,{
+    //   name: 'Services',
+    //   link: '/services',
+    // }
+    ,{
       name: 'Contact',
       link: '/contact',
     }
@@ -100,7 +102,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .navbar{
-  z-index: 3;
+   z-index: 3; 
 }
 .fade-enter-active,
 .fade-leave-active {

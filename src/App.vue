@@ -1,20 +1,37 @@
 <template>
   <div id="main">
     <Navbar></Navbar>
+    
     <div id="views" class="pt-16 md:pt-0">
       <router-view/>
-    </div>
+    </div><div class="text-black">cats: {{cats.length}} | {{cats}}</div>
   </div>
 </template>
 <script>
 
 import Navbar from '@/components/Navbar.vue'
+import { reactive,  onMounted
+ } from 'vue'
+import { useCategoriesStore } from "@/store/categories";
 
 export default {
   name: 'App',
   components: {
     Navbar
   },
+  setup(){
+    const categoriesStore = reactive(useCategoriesStore())
+    const cats = reactive(categoriesStore.categoriesResults)
+    
+
+    
+
+    onMounted(() => {
+      categoriesStore.getCategories()
+    })
+
+    return{  cats}
+  }
 }
 </script>
 
@@ -106,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.0rem;
   font-weight: bold;
   text-transform: uppercase;
-  border: 2px solid gainsboro;
+  border: 2px solid var(--color);
   padding: .75rem 1.25rem;
   transition: all .2s ease-in-out;
 }
@@ -114,6 +131,9 @@ h1, h2, h3, h4, h5, h6 {
   transition: all .2s ease-in-out;
   border: 2px solid var(--primary);
   background: var(--primary);
+}
+.btn-light{
+  border: 2px solid var(--background);
 }
 .view{
   width: 100%;
