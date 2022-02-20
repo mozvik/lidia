@@ -16,7 +16,8 @@
         <div class="flex flex-col items-start">
           <div v-for="(item, index) in menuItems" :key="index" class="menu-item transform ease-in-out duration-300"
           :class="open ? '-translate-x-1 opacity-1':'-translate-x-10 opacity-0'"
-          :style="open ? 'transition-delay: '+ ((index*75)+100) +'ms':'transition-delay: 0ms'">
+          :style="open ? 'transition-delay: '+ ((index*75)+100) +'ms':'transition-delay: 0ms'"
+          >
             
 
               <router-link :to="item.link" @click="open = false">{{ item.name }}</router-link>
@@ -51,10 +52,10 @@
 </template>
 
 <script>
-import { ref, onMounted
- } from 'vue'
- import { MenuAlt2Icon, ArrowSmDownIcon, PhoneIcon, MailIcon, } from '@heroicons/vue/solid'
- import { BIconFacebook, BIconTwitter, BIconInstagram } from 'bootstrap-icons-vue';
+import { ref, onMounted, reactive } from 'vue'
+import { MenuAlt2Icon, ArrowSmDownIcon, PhoneIcon, MailIcon, } from '@heroicons/vue/solid'
+import { BIconFacebook, BIconTwitter, BIconInstagram } from 'bootstrap-icons-vue';
+// import { useCategoriesStore } from "@/store/categories";
 
 export default {
   name: 'Navbar',
@@ -62,7 +63,7 @@ export default {
   setup(){
     const open = ref(false)
 
-    const menuItems = [{
+    const menuItems = reactive([{
       name: 'Home',
       link: '/',
     },{
@@ -80,10 +81,13 @@ export default {
       name: 'Contact',
       link: '/contact',
     }
-    ]
+    ])
 
-    
-    onMounted( () => {
+    // const categoriesStore = reactive(useCategoriesStore())
+    // const categories = reactive(categoriesStore.data)
+
+    onMounted( () => { 
+      // categoriesStore.getCategories()
       window.addEventListener('click', function(e){   
       if (!document.getElementById('menu').contains(e.target)){
           open.value = false

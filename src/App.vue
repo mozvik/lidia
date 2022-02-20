@@ -1,18 +1,22 @@
 <template>
   <div id="main">
     <Navbar></Navbar>
-    
-    <div id="views" class="pt-16 md:pt-0">
+     <div id="views" class="pt-16 md:pt-0">
       <router-view/>
-    </div><div class="text-black">cats: {{cats.length}} | {{cats}}</div>
+    </div>
+ 
   </div>
+
+  
+
+
 </template>
 <script>
 
+import { onMounted, reactive } from 'vue'
 import Navbar from '@/components/Navbar.vue'
-import { reactive,  onMounted
- } from 'vue'
 import { useCategoriesStore } from "@/store/categories";
+import { useGalleryStore } from "@/store/gallery";
 
 export default {
   name: 'App',
@@ -21,16 +25,12 @@ export default {
   },
   setup(){
     const categoriesStore = reactive(useCategoriesStore())
-    const cats = reactive(categoriesStore.categoriesResults)
-    
-
-    
-
-    onMounted(() => {
+    const galleryStore = reactive(useGalleryStore())
+    onMounted( () => { 
       categoriesStore.getCategories()
+      galleryStore.getImages()
     })
-
-    return{  cats}
+    
   }
 }
 </script>
