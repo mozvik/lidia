@@ -11,12 +11,10 @@
           <div class="mx-3 mb-6 text-lg" v-html="painting.content.rendered"></div>
           <div class=" mx-7">
             <ul class="list-disc">
-              <li>{{painting.acf.style}}</li>
-              <li>{{painting.acf.tech}}</li>
-              <li>{{painting.acf.size}}</li>
-              <li>{{painting.acf.price}}</li>
-              
-              
+              <li v-if="painting.acf.style">{{painting.acf.style}}</li>
+              <li v-if="painting.acf.tech">{{painting.acf.tech}}</li>
+              <li v-if="painting.acf.size">{{painting.acf.size}}</li>
+              <li v-if="painting.acf.price">{{painting.acf.price}}</li>
             </ul>
           </div>
         </div> 

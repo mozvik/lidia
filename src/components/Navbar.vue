@@ -107,6 +107,7 @@ export default {
 <style scoped>
 .navbar{
    z-index: 3; 
+   background: var(--color);
 }
 .fade-enter-active,
 .fade-leave-active {
@@ -148,5 +149,11 @@ export default {
   color: var(--primary);
   font-family: 'Cormorant Upright', serif;
   font-weight: bold;
+}
+@media screen and (min-width: 768px) {
+.navbar{
+  background: transparent;  
+
+}
 }
 </style>
