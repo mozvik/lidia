@@ -20,6 +20,11 @@ const routes = [
     name: 'Gallery',
     component: () => import('../views/Gallery.vue'),
   },
+  {
+    path: '/gallery/:id',
+    name: 'PaintDetails',
+    component: () => import('../views/PaintDetails.vue'),
+  },
   // {
   //   path: '/services',
   //   name: 'Services',

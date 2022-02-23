@@ -2,7 +2,11 @@
   <div id="main">
     <Navbar></Navbar>
      <div id="views" class="pt-16 md:pt-0">
-      <router-view/>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in" >
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
  
   </div>
@@ -145,10 +149,18 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 1080px;
   width: 100%;
   margin: 0 auto;
-  border: 1px solid red;
-  
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.25s ease;
 }
 
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
 
 
 

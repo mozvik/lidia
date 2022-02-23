@@ -4,15 +4,15 @@
     :class="!open ? 
     'transform ease-in duration-300 -translate-x-72 ':
     'transform ease-in duration-300 '">
-      <div id="menu-buttons" class=" ml-16 order-1 relative mt-0 md:mt-16">
+      <div id="menu-buttons" class="ml-2 md:ml-16 order-1 relative mt-2 md:mt-16">
         <button @click="open = !open">
-            <MenuAlt2Icon class="h-10 w-10  absolute left-0 top-0 transform ease-in duration-300" :class="!open ? 'rotate-0 opacity-1':'rotate-180 opacity-0'"/>
+            <MenuAlt2Icon class="h-10 w-10 absolute left-0 top-0 transform ease-in duration-300" :class="!open ? 'rotate-0 opacity-1':'rotate-180 opacity-0'"/>
             <ArrowSmDownIcon class="h-10 w-10  absolute left-0 top-0 transform ease-in duration-300" :class="open ? 'rotate-90 opacity-1':'-rotate-0 opacity-0'"/>
         </button>
       </div>
         
       <div id="menu-items" class="order-0 pt-16 flex flex-col justify-around items-start pl-8">
-        <div class="text-6xl p-color pl-7"><h1>RdF</h1></div>
+        <div class="text-6xl p-color pl-7"><h1>L<span class="text-5xl">d</span>F</h1></div>
         <div class="flex flex-col items-start">
           <div v-for="(item, index) in menuItems" :key="index" class="menu-item transform ease-in-out duration-300"
           :class="open ? '-translate-x-1 opacity-1':'-translate-x-10 opacity-0'"
@@ -24,7 +24,7 @@
 
           </div>
         </div>
-        <div class=" pl-7">
+        <div class="pb-7 pl-7">
           <div class="flex">
             <PhoneIcon class="h-5 w-5 mr-4 p-color"/>
             <p>+39 000 000 00</p>
@@ -46,7 +46,7 @@
 
     </div>
 
-    <div id="logo" class="block md:hidden">LOGO</div>
+    <div id="logo" class="block md:hidden mr-8 mt-3 text-3xl">LdF</div>
       
   </div>
 </template>
@@ -137,12 +137,16 @@ export default {
   
   display: inline-block;
   padding: 1rem 9rem 1rem 2rem;
-  transition: all .1s ease;
+  transition: all .2s ease;
 }
 .menu-item>a:hover{
   background: var(--primary);
   color: var(--color);
-  transition: all .1s ease;
+  transition: all .2s ease;
 }
-
+#logo{
+  color: var(--primary);
+  font-family: 'Cormorant Upright', serif;
+  font-weight: bold;
+}
 </style>
