@@ -27,37 +27,22 @@
   </div>
 </template>
 
-<script>
-import { reactive, watchEffect, ref } from 'vue'
-import { useGalleryStore } from "@/store/gallery"
-import { useRoute } from 'vue-router'
-import Header from '@/components/Header.vue'
+<script setup>
+  import { reactive, watchEffect, ref } from 'vue'
+  import { useGalleryStore } from "@/store/gallery"
+  import { useRoute } from 'vue-router'
+  import Header from '@/components/Header.vue'
 
-export default {
-  name: 'PaintDetails',
-  components: { Header},
-   
-  setup() {
-    const galleryStore = reactive(useGalleryStore())
-    const gallery = reactive(galleryStore.data)
-    const route = useRoute()
-    // const painting = computed(() => {
-    //   console.log(' :>> ', gallery.filter(e => e.id == route.params.id));
-    //   return gallery ? gallery.filter(e => e.id == route.params.id):null;
-    // });
-    const painting = ref()
+  const galleryStore = reactive(useGalleryStore())
+  const gallery = reactive(galleryStore.data)
+  const route = useRoute()
 
-    watchEffect(() => painting.value = gallery.find(e => e.id == route.params.id))
+  const painting = ref()
 
-    return { painting }
-  }
-}
-
+  watchEffect(() => painting.value = gallery.find(e => e.id == route.params.id))
 </script>
 
-
 <style scoped>
-
 
 .view-painting{
   margin: 0 auto;

@@ -159,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  transform: scale(0.9);
+  /* transform: scale(0.9); */
 }
 
 

@@ -62,17 +62,10 @@
   </div>
 </template>
 
-<script>
-
-import Header from '@/components/Header.vue'
-import { PhoneIcon, MailIcon, LocationMarkerIcon } from '@heroicons/vue/solid'
-import { BIconFacebook, BIconTwitter, BIconInstagram } from 'bootstrap-icons-vue';
-
-export default {
-  name: 'Contact',
-  components: { Header, PhoneIcon, MailIcon, LocationMarkerIcon, BIconFacebook, BIconTwitter, BIconInstagram }
-}
-
+<script setup>
+  import Header from '@/components/Header.vue'
+  import { PhoneIcon, MailIcon, LocationMarkerIcon } from '@heroicons/vue/solid'
+  import { BIconFacebook, BIconTwitter, BIconInstagram } from 'bootstrap-icons-vue';
 </script>
 
 <style scoped>
@@ -85,7 +78,6 @@ export default {
     width: 100%;
   }
   label { 
-    /* width: 100px; */
     text-align: start;
   }
   input, textarea{

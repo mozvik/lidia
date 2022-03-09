@@ -31,7 +31,7 @@
         </div>
         
         <div class="images" >
-          <transition-group name="fade">
+          <transition-group name="bounce">
             <div v-for="(item) in filteredGallery" :key="item.id">
               <router-link :to="'/gallery/' + item.id">
                 <div class="grid-item">
@@ -51,48 +51,38 @@
   </div>
 </template>
 
-<script>
-import { reactive, ref, computed } from 'vue'
-import { ArrowCircleRightIcon } from '@heroicons/vue/outline'
-import { useCategoriesStore } from "@/store/categories"
-import { useGalleryStore } from "@/store/gallery"
-import Header from '@/components/Header.vue'
+<script setup>
+  import { reactive, ref, computed } from 'vue'
+  import { ArrowCircleRightIcon } from '@heroicons/vue/outline'
+  import { useCategoriesStore } from "@/store/categories"
+  import { useGalleryStore } from "@/store/gallery"
+  import Header from '@/components/Header.vue'
 
-export default {
-  name: 'Gallery',
-  components: { Header, ArrowCircleRightIcon},
-   
-  setup() {
-    const categoriesStore = reactive(useCategoriesStore())
-    const galleryStore = reactive(useGalleryStore())
-    const categories = reactive(categoriesStore.data)
-    const gallery = reactive(galleryStore.data)
-    const active = ref(0)
-    const selected = ref(0)
+  const categoriesStore = reactive(useCategoriesStore())
+  const galleryStore = reactive(useGalleryStore())
+  const categories = reactive(categoriesStore.data)
+  const gallery = reactive(galleryStore.data)
+  const active = ref(0)
+  const selected = ref(0)
 
-    const filteredGallery = computed(() => {
-      if( active.value == null) {
-        return undefined
-      }else if (active.value == 0) {
-        return gallery
-      } else {
-        return gallery.filter(x => x.categories.find(element => element == activeCategoryId.value));
-      }
-    });
-
-    const activeCategoryId = computed(() => categories[active.value].id      )
-
-    function changeActive(id) {
-      active.value = null
-      setTimeout(() => {
-         active.value = id
-       }, 220);
+  const filteredGallery = computed(() => {
+    if( active.value == null) {
+      return undefined
+    }else if (active.value == 0) {
+      return gallery
+    } else {
+      return gallery.filter(x => x.categories.find(element => element == activeCategoryId.value));
     }
+  });
 
-    return { categories, active, filteredGallery, changeActive, selected }
+  const activeCategoryId = computed(() => categories[active.value].id      )
+
+  const changeActive = (id) => {
+    active.value = null
+    setTimeout(() => {
+        active.value = id
+      }, 220);
   }
-}
-
 </script>
 
 
@@ -100,17 +90,18 @@ export default {
 .gallery {
   min-height: 110vh;
 }
-.fade-enter-active,
-.fade-leave-active {
+.bounce-enter-active,
+.bounce-leave-active {
   transition: all .20s ease;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.bounce-enter-from, .bounce-leave-to {
   opacity: 0;
+  transform-origin: top;
   transform: scale(0);
-  transition: all .20s ease;
+  transition: all 0.20s ease;
 }
+
 .view-gallery{
   margin: 0 auto;
   max-width: 1600px;

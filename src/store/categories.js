@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-// import axios from 'axios'
 
 export const useCategoriesStore = defineStore({
   // id is required so that Pinia can connect the store to the devtools

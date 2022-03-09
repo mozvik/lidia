@@ -18,10 +18,7 @@
           :class="open ? '-translate-x-1 opacity-1':'-translate-x-10 opacity-0'"
           :style="open ? 'transition-delay: '+ ((index*75)+100) +'ms':'transition-delay: 0ms'"
           >
-            
-
               <router-link :to="item.link" @click="open = false">{{ item.name }}</router-link>
-
           </div>
         </div>
         <div class="pb-7 pl-7">
@@ -40,10 +37,6 @@
           </div>
         </div>
       </div> 
-      
-    
-      
-
     </div>
 
     <div id="logo" class="block md:hidden mr-8 mt-3 text-3xl">LdF</div>
@@ -51,56 +44,41 @@
   </div>
 </template>
 
-<script>
-import { ref, onMounted, reactive } from 'vue'
-import { MenuAlt2Icon, ArrowSmDownIcon, PhoneIcon, MailIcon, } from '@heroicons/vue/solid'
-import { BIconFacebook, BIconTwitter, BIconInstagram } from 'bootstrap-icons-vue';
-// import { useCategoriesStore } from "@/store/categories";
+<script setup>
+  import { ref, onMounted, reactive } from 'vue'
+  import { MenuAlt2Icon, ArrowSmDownIcon, PhoneIcon, MailIcon, } from '@heroicons/vue/solid'
+  import { BIconFacebook, BIconTwitter, BIconInstagram } from 'bootstrap-icons-vue';
 
-export default {
-  name: 'Navbar',
-  components: { MenuAlt2Icon, ArrowSmDownIcon, PhoneIcon, MailIcon, BIconFacebook, BIconTwitter, BIconInstagram },
-  setup(){
-    const open = ref(false)
+  const open = ref(false)
 
-    const menuItems = reactive([{
-      name: 'Home',
-      link: '/',
-    },{
-      name: 'About',
-      link: '/about',
-    },{
-      name: 'Gallery',
-      link: '/gallery',
-    }
-    // ,{
-    //   name: 'Services',
-    //   link: '/services',
-    // }
-    ,{
-      name: 'Contact',
-      link: '/contact',
-    }
-    ])
-
-    // const categoriesStore = reactive(useCategoriesStore())
-    // const categories = reactive(categoriesStore.data)
-
-    onMounted( () => { 
-      // categoriesStore.getCategories()
-      window.addEventListener('click', function(e){   
-      if (!document.getElementById('menu').contains(e.target)){
-          open.value = false
-        }
-      })
-    })
-   
-    return {open, menuItems}
-  },
-  props: {
-    msg: String
+  const menuItems = reactive([{
+    name: 'Home',
+    link: '/',
+  },{
+    name: 'About',
+    link: '/about',
+  },{
+    name: 'Gallery',
+    link: '/gallery',
   }
-}
+  // ,{
+  //   name: 'Services',
+  //   link: '/services',
+  // }
+  ,{
+    name: 'Contact',
+    link: '/contact',
+  }
+  ])
+
+  onMounted( () => { 
+    // categoriesStore.getCategories()
+    window.addEventListener('click', function(e){   
+    if (!document.getElementById('menu').contains(e.target)){
+        open.value = false
+      }
+    })
+  })
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
