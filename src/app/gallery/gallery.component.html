@@ -1,0 +1,11 @@
+<h1>Gallery</h1>
+<span>{{errorMsg}}</span>
+<div *ngFor="let post of blogPosts" style="border: 1px solid black; margin: 1rem 0;">
+  <div class="title" style="background-color: antiquewhite;">
+    <h2>{{post.title.rendered}}</h2>
+    <p>{{post.date | date: 'short'}}</p>
+  </div>
+  
+  <div class="details" [innerHTML]="post.excerpt.rendered | slice:0:400"></div>
+  <button [routerLink]="['/gallery', post.id]">Details</button>
+</div>

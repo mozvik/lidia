@@ -1,0 +1,12 @@
+<h1>Gallery</h1>
+<span>{{errorMsg}}</span>
+<div *ngIf="details" style="border: 1px solid black; margin: 1rem 0;">
+  <div class="title" style="background-color: antiquewhite;">
+    <h2>{{details.title.rendered}}</h2>
+    <p>{{details.date | date: 'short'}}</p>
+  </div>
+  
+  <div class="details" [innerHTML]="details.excerpt.rendered | slice:0:400"></div>
+  <button [routerLink]="['/gallery', details.id]">Details</button>
+</div>
+
