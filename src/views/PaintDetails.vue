@@ -3,12 +3,12 @@
     <Header></Header>
     <div class="view">
       <div class="view-header py-6">
-        <h2 v-if="painting" class="view-title cap small-caps">{{painting.title.rendered}}</h2> 
-        <h3 class="breadcumb"><router-link to="/">Home</router-link> / <router-link to="/gallery">Gallery</router-link> </h3>
+        <h2 v-if="painting" class="view-title cap small-caps">{{painting.title}}</h2> 
+        <h3 class="breadcumb"><router-link to="/">{{localeStore.changeContent(localeStore.gallery).breadcumbHome}}</router-link> / <router-link to="/gallery">{{localeStore.changeContent(localeStore.gallery).breadcumbGallery}}</router-link> </h3>
       </div>
       <div v-if="painting" class="view-painting mx-0 md:mx-32 flex flex-col md:flex-row">
         <div class="painting-aside text-left">
-          <div class="mx-3 mb-6 text-lg" v-html="painting.content.rendered"></div>
+          <div class="mx-3 mb-6 text-lg" v-html="painting.description"></div>
           <div class=" mx-7">
             <ul class="list-disc">
               <li v-if="painting.acf.style">{{painting.acf.style}}</li>
@@ -28,18 +28,18 @@
 </template>
 
 <script setup>
-  import { reactive, watchEffect, ref } from 'vue'
-  import { useGalleryStore } from "@/store/gallery"
+  import { watchEffect, ref } from 'vue'
+  import { useLocaleStore } from "@/store/locale"
   import { useRoute } from 'vue-router'
   import Header from '@/components/Header.vue'
 
-  const galleryStore = reactive(useGalleryStore())
-  const gallery = reactive(galleryStore.data)
+  const localeStore = useLocaleStore()
+  // const gallery = localeStore.imageText
   const route = useRoute()
 
   const painting = ref()
 
-  watchEffect(() => painting.value = gallery.find(e => e.id == route.params.id))
+  watchEffect(() => painting.value = localeStore.imageText.find(e => e.id == route.params.id))
 </script>
 
 <style scoped>

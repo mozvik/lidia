@@ -1,12 +1,15 @@
 <template>
   <div class="home flex flex-col justify-center">
-    <h1 class="title">Lídia di Franco</h1>
-    <div class="subtitle pt-6 pb-10">Artist, Fontanafredda</div>
-    <div><router-link to="/gallery"><button class="big-btn">View Gallery</button></router-link></div>
+    <h1 class="title">Lídia Di Franco</h1>
+    <div class="subtitle pt-6 pb-10">{{localeStore.changeContent(localeStore.home).subtitle}}</div>
+    <div><router-link to="/gallery"><button class="big-btn">{{localeStore.changeContent(localeStore.home).buttonText}}</button></router-link></div>
   </div>
 </template>
 
 <script setup>
+  import { useLocaleStore } from "@/store/locale"
+
+  const localeStore = useLocaleStore()
 </script>
 
 <style scoped>

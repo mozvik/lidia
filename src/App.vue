@@ -19,8 +19,8 @@
 
 import { onMounted, reactive } from 'vue'
 import Navbar from '@/components/Navbar.vue'
-import { useCategoriesStore } from "@/store/categories";
-import { useGalleryStore } from "@/store/gallery";
+import { useLocaleStore } from "@/store/locale";
+// import { useGalleryStore } from "@/store/gallery";
 
 export default {
   name: 'App',
@@ -28,11 +28,12 @@ export default {
     Navbar
   },
   setup(){
-    const categoriesStore = reactive(useCategoriesStore())
-    const galleryStore = reactive(useGalleryStore())
-    onMounted( () => { 
-      categoriesStore.getCategories()
-      galleryStore.getImages()
+    const localeStore = reactive(useLocaleStore())
+    // const galleryStore = reactive(useGalleryStore())
+    onMounted(() => { 
+      localeStore.getCategories()
+      localeStore.getImages()
+      
     })
     
   }
@@ -44,8 +45,11 @@ export default {
 :root{
   --background: #0e0e0c;
   --color: #f2eaea;
-  --primary: #f15e4b;
+  /* --primary: #f15e4b; */
+  /* --primary: #ca2c92; */
+  --primary: #ff0080;
   --secondary: #d8d4d2;
+  /* --secondary: #9e7bb5; */
 }
 #app {
   font-family: 'Josefin Sans', sans-serif;

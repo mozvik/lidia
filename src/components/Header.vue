@@ -1,6 +1,6 @@
 <template>
   <div class="header flex justify-center items-center">
-    <h1 class="title">Lídia di Franco</h1>
+    <h1 class="title">Lídia Di Franco</h1>
   </div>
 </template>
 

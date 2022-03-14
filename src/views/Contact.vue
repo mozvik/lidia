@@ -3,35 +3,35 @@
     <Header></Header>
     <div class="view">
       <div class="view-header py-6">
-        <h2 class="view-title cap small-caps">Get In Touch</h2> 
-        <h3 class="breadcumb"><router-link to="/">Home</router-link> / <span>Contact Me</span></h3>
+        <h2 class="view-title cap small-caps">{{localeStore.changeContent(localeStore.contact).subtitle}}</h2> 
+        <h3 class="breadcumb"><router-link to="/">{{localeStore.changeContent(localeStore.contact).breadcumbHome}}</router-link> / <span>{{localeStore.changeContent(localeStore.contact).breadcumbContact}}</span></h3>
       </div>
       <div class="view-content flex flex-col md:flex-row items-center md:items-start justify-center py-4">
         <div class="form p-5 border-r-2 border-gray-300">
           <form action="" class="grid grid-cols-2 gap-4">
             <div class="flex flex-col col-span-2">
-              <label for="name">Name</label>
+              <label for="name">{{localeStore.changeContent(localeStore.contact).name}}</label>
               <input type="text" id="name" name="name" >
               <div class="error">&nbsp;</div>
             </div>
             
             <div class="flex flex-col">
-              <label for="email">Email</label>
+              <label for="email">{{localeStore.changeContent(localeStore.contact).email}}</label>
               <input type="email" id="email" name="email" >
               <div class="error">&nbsp;</div>
             </div>
             <div class="flex flex-col">
-              <label for="phone">Phone</label>
+              <label for="phone">{{localeStore.changeContent(localeStore.contact).phone}}</label>
               <input type="text" id="phone" name="phone" >
               <div class="error">&nbsp;</div>
             </div>
             <div class="flex flex-col col-span-2">
-              <label for="message">Message</label>
+              <label for="message">{{localeStore.changeContent(localeStore.contact).message}}</label>
               <textarea type="text" id="messagee" name="messagee" rows="4" ></textarea>
               <div class="error">&nbsp;</div>
             </div>
           </form>
-          <button class="float-left big-btn btn-light">Send Message</button>
+          <button class="float-left big-btn btn-light">{{localeStore.changeContent(localeStore.contact).sendButton}}</button>
         </div>
         <div class="divide-y divide-dashed"></div>
         <div class="contacts p-5"><br>
@@ -66,6 +66,9 @@
   import Header from '@/components/Header.vue'
   import { PhoneIcon, MailIcon, LocationMarkerIcon } from '@heroicons/vue/solid'
   import { BIconFacebook, BIconTwitter, BIconInstagram } from 'bootstrap-icons-vue';
+  import { useLocaleStore } from "@/store/locale"
+
+  const localeStore = useLocaleStore()
 </script>
 
 <style scoped>

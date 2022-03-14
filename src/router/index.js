@@ -1,7 +1,7 @@
 import {
   createRouter,
-  // createWebHistory,
-  createWebHashHistory
+  createWebHistory,
+  //createWebHashHistory
 } from 'vue-router'
 import Home from '../views/Home.vue'
 
@@ -43,8 +43,8 @@ const routes = [
 
 const router = createRouter({
   // history: createWebHistory(process.env.BASE_URL),
-  // history: createWebHistory("/"),
-  history: createWebHashHistory(),
+  history: createWebHistory("/"),
+  // history: createWebHashHistory(),
   routes
 })
 

@@ -3,12 +3,14 @@
     <Header></Header>
     <div class="view">
       <div class="view-header py-6">
-        <h2 class="view-title cap small-caps">My Works</h2> 
-        <h3 class="breadcumb"><router-link to="/">Home</router-link> / <span>Gallery</span></h3>
+        <h2 class="view-title cap small-caps">{{localeStore.changeContent(localeStore.gallery).subtitle}}</h2> 
+        <h3 class="breadcumb"><router-link to="/">{{localeStore.changeContent(localeStore.gallery).breadcumbHome}}</router-link> / <span>{{localeStore.changeContent(localeStore.gallery).breadcumbGallery}}</span></h3>
+        
       </div>
       <div class="view-gallery mx-0 md:mx-32 flex flex-col md:flex-row">
         <div class="categories-menu hidden md:block text-left">
-          <h4 class="caps small-caps mx-3 mb-6 font-bold text-xl">Categories</h4>
+          <h4 class="caps small-caps mx-3 mb-6 font-bold text-xl">{{localeStore.changeContent(localeStore.gallery).categories}}</h4>
+          <p></p>
           <div class="categories-menu-wrapper">
 
             <div v-for="(item, index) in categories" :key="index"
@@ -23,21 +25,25 @@
         <div class="categories-select block md:hidden">
           <select name="categories" id="mobile-categories" class="min-w-max p-1"
           @change="changeActive(selected)" v-model="selected">
-            <option v-for="(item, index) in categories" :key="index" :value="index"
+            <option v-for="(item, index) in localeStore.localeCategories" :key="index" :value="index"
             >
             {{item.name}} 
             </option>
           </select>
         </div>
         
-        <div class="images" >
+        <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <Loader v-if="!gallery.length" dotColor="blue" :scale="1.0"></Loader>
+        </div>
+        <div class="images" v-if="gallery.length" >
+          
           <transition-group name="bounce">
             <div v-for="(item) in filteredGallery" :key="item.id">
               <router-link :to="'/gallery/' + item.id">
                 <div class="grid-item">
                   <img v-show="item" :src="item.acf.thumbnail" alt="" class="grid-img">
                   <div class="grid-text pointer-events-none">
-                    <h4 class="subtitle mb-5">{{item.title.rendered}}</h4>
+                    <h4 class="subtitle mb-5">{{item.title}}</h4>
                     <div><ArrowCircleRightIcon class="h-7 w-7 p-color"/></div>
                   </div>
                 </div>
@@ -52,16 +58,19 @@
 </template>
 
 <script setup>
-  import { reactive, ref, computed } from 'vue'
+  import { ref, computed } from 'vue'
   import { ArrowCircleRightIcon } from '@heroicons/vue/outline'
-  import { useCategoriesStore } from "@/store/categories"
-  import { useGalleryStore } from "@/store/gallery"
+  // import { useGalleryStore } from "@/store/gallery"
+  import Loader from '@/components/Loader.vue'
   import Header from '@/components/Header.vue'
+  import { useLocaleStore } from "@/store/locale"
 
-  const categoriesStore = reactive(useCategoriesStore())
-  const galleryStore = reactive(useGalleryStore())
-  const categories = reactive(categoriesStore.data)
-  const gallery = reactive(galleryStore.data)
+  const localeStore = useLocaleStore()
+
+  // const categoriesStore = reactive(useCategoriesStore())
+  // const galleryStore = reactive(useGalleryStore())
+  const categories = localeStore.categories
+  const gallery = localeStore.imageText
   const active = ref(0)
   const selected = ref(0)
 
@@ -69,11 +78,12 @@
     if( active.value == null) {
       return undefined
     }else if (active.value == 0) {
-      return gallery
+      return localeStore.imageText
     } else {
-      return gallery.filter(x => x.categories.find(element => element == activeCategoryId.value));
+      return localeStore.imageText.filter(x => x.categories.find(element => element == activeCategoryId.value));
     }
   });
+
 
   const activeCategoryId = computed(() => categories[active.value].id      )
 
