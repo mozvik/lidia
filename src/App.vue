@@ -8,19 +8,13 @@
         </transition>
       </router-view>
     </div>
- 
   </div>
-
-  
-
-
 </template>
 <script>
 
-import { onMounted, reactive } from 'vue'
+import { onMounted } from 'vue'
 import Navbar from '@/components/Navbar.vue'
 import { useLocaleStore } from "@/store/locale";
-// import { useGalleryStore } from "@/store/gallery";
 
 export default {
   name: 'App',
@@ -28,14 +22,12 @@ export default {
     Navbar
   },
   setup(){
-    const localeStore = reactive(useLocaleStore())
-    // const galleryStore = reactive(useGalleryStore())
+    const localeStore = useLocaleStore()
+    
     onMounted(() => { 
       localeStore.getCategories()
       localeStore.getImages()
-      
     })
-    
   }
 }
 </script>
@@ -163,7 +155,6 @@ h1, h2, h3, h4, h5, h6 {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  /* transform: scale(0.9); */
 }
 
 

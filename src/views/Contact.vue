@@ -30,8 +30,13 @@
               <textarea type="text" id="messagee" name="messagee" rows="4" ></textarea>
               <div class="error">&nbsp;</div>
             </div>
+             <div class="flex flex-row items-center col-span-2">
+              <input type="checkbox" id="gdpr" name="gdpr" >
+              <label for="gdpr">{{localeStore.changeContent(localeStore.contact).gdpr}}<router-link to="/privacy" style="color: dodgerblue">{{localeStore.changeContent(localeStore.contact).gdpr2}}</router-link></label>
+              <div class="error">&nbsp;</div>
+            </div>
           </form>
-          <button class="float-left big-btn btn-light">{{localeStore.changeContent(localeStore.contact).sendButton}}</button>
+          <button class="float-left big-btn btn-light mt-5">{{localeStore.changeContent(localeStore.contact).sendButton}}</button>
         </div>
         <div class="divide-y divide-dashed"></div>
         <div class="contacts p-5"><br>
@@ -85,7 +90,12 @@
   }
   input, textarea{
     width: 100%;
+    /* width: auto; */
     padding: .5rem;
+  }
+  input[type="checkbox"]{
+    width: auto;
+    margin-right: .5rem;
   }
   
 </style>

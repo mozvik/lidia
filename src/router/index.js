@@ -29,11 +29,11 @@ const routes = [
     name: 'PaintDetails',
     component: () => import('../views/PaintDetails.vue'),
   },
-  // {
-  //   path: '/services',
-  //   name: 'Services',
-  //   component: () => import('../views/Services.vue')
-  // },
+  {
+    path: '/privacy',
+    name: 'Gdpr',
+    component: () => import('../views/Gdpr.vue')
+  },
   {
     path: '/contact',
     name: 'Contact',

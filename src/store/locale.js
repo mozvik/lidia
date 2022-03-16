@@ -147,6 +147,16 @@ export const useLocaleStore = defineStore({
       message_eng: "Message",
       message_ita: "Messaggio",
       message_hun: 'Üzenet',
+      },
+      {
+      gdpr_eng: "I have read and understand the ",
+      gdpr_ita: "Ho letto e compreso l'informativa ",
+      gdpr_hun: 'Elfogadom az ',
+      },
+      {
+      gdpr2_eng: "privacy statement",
+      gdpr2_ita: "sulla privacy",
+      gdpr2_hun: 'adatkezelési tájékoztatót',
       }
 
     ],
