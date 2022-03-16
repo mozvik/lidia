@@ -210,8 +210,9 @@
     left: 0;
     right: 100%;
     height: 100%;
-    background: rgba(255,70,70,0.75);
+    background: var(--primary);
     transition: all .25s ease-in-out;
+    opacity: .5;
   }
   .grid-item::after{
     content: "";
@@ -221,9 +222,10 @@
     right: 0;
     width: 50%; 
     height: 100%;
-    background: rgba(170,0,0,.35);
-z-index: 1;
+    background: var(--primary);
+    z-index: 1;
     transition: all .25s ease-in-out;
+    opacity: .35;
   }
   .grid-item:hover:before{
     right: 0;
